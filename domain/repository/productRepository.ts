@@ -1,5 +1,8 @@
-import Product, { ProductStatus } from "../model/product";
+
+import Product from "../model/product";
 
 export default interface ProductRepository {
-    getByStatus: (status: ProductStatus[], limit?: number) => Promise<Product[]>;
+    getHomePageTabProducts: () => Promise<Product[]>;
+    getHomePageSuggestedProducts: () => Promise<Product[]>;
+    // getByStatus: (statusIds: string[], limit?: number) => Promise<Product[]>;
 }

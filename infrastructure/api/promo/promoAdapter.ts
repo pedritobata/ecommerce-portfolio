@@ -2,7 +2,6 @@ import Promo from "@/domain/model/promo";
 import PromoDTO from "./promoDTO";
 
 export default class PromoAdapter {
-
   static toPromo(promoDTO: PromoDTO): Promo {
     try {
       const {
@@ -14,9 +13,9 @@ export default class PromoAdapter {
         title,
         type,
         category,
-        description = "",
-        off_percentage = 0,
-        save_up_to = 0,
+        description,
+        off_percentage,
+        save_up_to,
       } = promoDTO;
 
       return {

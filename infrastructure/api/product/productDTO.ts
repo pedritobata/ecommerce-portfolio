@@ -1,17 +1,19 @@
-export default interface Product {
+// TODO: update with real DTOs when backend is ready!!
+
+export default interface ProductDTO {
   id: string;
   name: string;
   description?: string;
   category: ProductCategory;
   status: ProductStatus;
-  priceRange: number[];
+  price_range: number[];
   rating: number;
   stock: number;
-  imagesUrls: string[];
+  images_urls: string[];
   currency: Currency;
-  isHot?: boolean;
-  offPercentage?: number;
-  isFavorite?: boolean;
+  is_hot?: boolean;
+  off_percentage?: number;
+  is_favorite?: boolean;
 }
 
 export interface ProductStatus {

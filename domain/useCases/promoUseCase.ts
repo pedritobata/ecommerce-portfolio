@@ -19,8 +19,7 @@ export default class PromoUseCaseImpl implements PromoUseCase {
       genericPromos = await this._promoRepository.getGeneric();
     } catch (err) {
       console.error((err as Error).message || err);
-      const error = new GenericError("Could not get generic promos.");
-      return error;
+      return new GenericError("Could not get generic promos.");
     }
 
     return genericPromos;
