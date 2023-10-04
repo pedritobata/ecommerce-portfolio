@@ -1,6 +1,15 @@
 import Head from "next/head";
+import { fetchProducts } from "@/store/features/product/homePageProductsTabSlice";
+import { useEffect } from "react";
+import { useAppDispatch } from "@/store/store";
 
 export default function Home() {
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, [dispatch]);
+
   return (
     <>
       <Head>
