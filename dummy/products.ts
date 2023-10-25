@@ -3,7 +3,7 @@ import ProductDTO from "@/infrastructure/api/product/productDTO";
 
 export const products: ProductDTO[] = [
     {
-        id: '0001',
+        _id: '0001',
         name: 'Samsung Android cell phone',
         description: '',
         category: {
@@ -31,7 +31,7 @@ export const products: ProductDTO[] = [
         is_favorite: false,
     },
     {
-        id: '0002',
+        _id: '0002',
         name: 'Porto Evolution Headset',
         description: '',
         category: {
@@ -60,7 +60,7 @@ export const products: ProductDTO[] = [
         is_favorite: false,
     },
     {
-        id: '0003',
+        _id: '0003',
         name: 'Casio Wireless Headset',
         description: '',
         category: {

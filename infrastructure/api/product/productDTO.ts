@@ -1,7 +1,7 @@
 // TODO: update with real DTOs when backend is ready!!
 
 export default interface ProductDTO {
-  id: string;
+  _id: string;
   name: string;
   description?: string;
   category: ProductCategory;

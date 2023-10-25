@@ -7,7 +7,7 @@ export default class ProductAdapter {
       const {
         category,
         currency,
-        id,
+        _id,
         images_urls,
         name,
         price_range,
@@ -23,7 +23,7 @@ export default class ProductAdapter {
       return {
         category,
         currency,
-        id,
+        id: _id,
         imagesUrls: images_urls,
         name,
         priceRange: price_range,

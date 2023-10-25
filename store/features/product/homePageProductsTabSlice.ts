@@ -1,22 +1,15 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import {
+  createSlice,
+  createAsyncThunk,
+  current,
+  createEntityAdapter,
+} from "@reduxjs/toolkit";
 import Product from "@/domain/model/product";
 import ProductUseCaseImpl, {
   ProductUseCase,
 } from "@/domain/useCases/productUseCase";
 import ProductRepositoryImpl from "@/infrastructure/api/product/productRepositoryImpl";
 import GenericError from "@/shared/types/error";
-
-type SliceState = {
-  entities: Product[];
-  status: string;
-  error: string;
-};
-
-const initialState: SliceState = {
-  entities: [],
-  status: "idle",
-  error: "",
-};
 
 const productUsecase: ProductUseCase = new ProductUseCaseImpl(
   new ProductRepositoryImpl()
@@ -36,9 +29,15 @@ export const fetchProducts = createAsyncThunk<
   return products;
 });
 
+// Normalize data
+const homePageProductsAdapter = createEntityAdapter<Product>();
+
 const homePageProductsTabSlice = createSlice({
   name: "homePageProductsTab",
-  initialState,
+  initialState: homePageProductsAdapter.getInitialState({
+    status: "idle",
+    error: "",
+  }),
   reducers: {},
   extraReducers: (builder) => {
     builder
@@ -46,8 +45,12 @@ const homePageProductsTabSlice = createSlice({
         state.status = "loading";
       })
       .addCase(fetchProducts.fulfilled, (state, action) => {
-        state.entities = action.payload as unknown as Product[];
+        homePageProductsAdapter.setAll(
+          state,
+          action.payload as unknown as Product[]
+        );
         state.status = "idle";
+        console.log("new state => ", current(state));
       })
       .addCase(fetchProducts.rejected, (state, action) => {
         state.error = action.payload as string;
