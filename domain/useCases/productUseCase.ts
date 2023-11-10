@@ -1,10 +1,11 @@
 import GenericError from "@/shared/types/error";
 import Product from "../model/product";
 import ProductRepository from "../repository/productRepository";
+import { PaginatedList } from '../../shared/types/helpers';
 
 export interface ProductUseCase {
-  getHomePageTabProducts: () => Promise<Product[] | GenericError>;
-  getHomePageSuggestedProducts: () => Promise<Product[] | GenericError>;
+  getHomePageTabProducts: (page?: number) => Promise<PaginatedList<Product>  | GenericError>;
+  getHomePageSuggestedProducts: () => Promise<PaginatedList<Product>  | GenericError>;
 }
 
 export default class ProductUseCaseImpl implements ProductUseCase {
@@ -14,28 +15,29 @@ export default class ProductUseCaseImpl implements ProductUseCase {
     this._productRepository = productRepository;
   }
 
-  async getHomePageTabProducts(): Promise<Product[] | GenericError> {
+  async getHomePageTabProducts(page?: number): Promise<PaginatedList<Product> | GenericError> {
     try {
-      const products = await this._productRepository.getHomePageTabProducts();
-      if (!products || products.length === 0) {
+      const result = await this._productRepository.getHomePageTabProducts(page);
+      console.log('data =>', result);
+      if (!result.data || result.data.length === 0) {
         throw new Error("No products retrieved for tabs section from api");
       }
 
-      return products;
+      return result;
     } catch (err) {
       console.error((err as Error).message || err);
       return new GenericError("Could not get products for tabs section");
     }
   }
 
-  async getHomePageSuggestedProducts(): Promise<Product[] | GenericError> {
+  async getHomePageSuggestedProducts(): Promise<PaginatedList<Product> | GenericError> {
     try {
-      const products = await this._productRepository.getHomePageSuggestedProducts();
-      if (!products || products.length === 0) {
+      const result = await this._productRepository.getHomePageSuggestedProducts();
+      if (!result.data || result.data.length === 0) {
         throw new Error("No products retrieved for suggested section from api");
       }
 
-      return products;
+      return result;
     } catch (err) {
       console.error((err as Error).message || err);
       return new GenericError("Could not get products for suggested section");

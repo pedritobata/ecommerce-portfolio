@@ -6,27 +6,31 @@ import {
 } from "@reduxjs/toolkit";
 import Product from "@/domain/model/product";
 import ProductUseCaseImpl, {
-  ProductUseCase,
+  type ProductUseCase,
 } from "@/domain/useCases/productUseCase";
 import ProductRepositoryImpl from "@/infrastructure/api/product/productRepositoryImpl";
 import GenericError from "@/shared/types/error";
+import type { RootState } from "@/store/store";
+import { PaginatedList } from "../../../shared/types/helpers";
 
 const productUsecase: ProductUseCase = new ProductUseCaseImpl(
   new ProductRepositoryImpl()
 );
 
+// TODO: get rid of the whole file when the equivalent api slice is created!!
+
 export const fetchProducts = createAsyncThunk<
-  Promise<Product[] | string>,
-  void,
+  Promise<PaginatedList<Product> | string>,
+  { page?: number } | undefined,
   {
     rejectValue: string;
   }
->("homePageProductsTab/fetchProducts", async (_, thunkApi) => {
-  const products = await productUsecase.getHomePageTabProducts();
-  if (products instanceof GenericError)
-    return thunkApi.rejectWithValue(products.message) as unknown as string;
+>("homePageProductsTab/fetchProducts", async (args, thunkApi) => {
+  const result = await productUsecase.getHomePageTabProducts(args?.page);
+  if (result instanceof GenericError)
+    return thunkApi.rejectWithValue(result.message) as unknown as string;
 
-  return products;
+  return result;
 });
 
 // Normalize data
@@ -50,7 +54,7 @@ const homePageProductsTabSlice = createSlice({
           action.payload as unknown as Product[]
         );
         state.status = "idle";
-        console.log("new state => ", current(state));
+        // console.log("new state => ", current(state));
       })
       .addCase(fetchProducts.rejected, (state, action) => {
         state.error = action.payload as string;
@@ -60,3 +64,13 @@ const homePageProductsTabSlice = createSlice({
 });
 
 export default homePageProductsTabSlice.reducer;
+
+export const {
+  selectAll: selectAllHomePageProductsTab,
+  selectById: selectByIdHomePageProductsTab,
+  selectEntities: selectEntitiesHomePageProductsTab,
+  selectIds: selectIdsHomePageProductsTab,
+  selectTotal: selectTotalHomePageProductsTab,
+} = homePageProductsAdapter.getSelectors<RootState>(
+  (state) => state.homePageProductsTab
+);

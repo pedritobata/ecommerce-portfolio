@@ -1,8 +1,9 @@
 import Product from "@/domain/model/product";
-import ProductDTO from "./productDTO";
+import ProductDTO from "../../../shared/types/productDTO";
+import { AdapterDTO } from "@/shared/types/adapter";
 
-export default class ProductAdapter {
-  static toProduct(productDTO: ProductDTO): Product {
+export default class ProductAdapter extends AdapterDTO<ProductDTO, Product> {
+  toModel(productDTO: ProductDTO): Product {
     try {
       const {
         category,

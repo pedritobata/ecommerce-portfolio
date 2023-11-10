@@ -3,7 +3,7 @@
 export default interface PromoDTO {
   id: string;
   title: string;
-  type: PromoType;
+  type: PromoTypeDTO;
   is_generic: boolean;
   short_description: string;
   description?: string;
@@ -11,16 +11,16 @@ export default interface PromoDTO {
   save_up_to?: number;
   start_price: number;
   off_percentage?: number;
-  category?: ProductCategory;
+  category?: ProductCategoryDTO;
 }
 
-export interface ProductCategory {
-  id: string;
+export interface ProductCategoryDTO {
+  id: number;
   name: string;
   description?: string;
 }
 
-export interface PromoType {
+export interface PromoTypeDTO {
   id: string;
   name: string; // primary, secondary, etc
 }

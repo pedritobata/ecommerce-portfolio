@@ -1,8 +1,9 @@
 import Promo from "@/domain/model/promo";
-import PromoDTO from "./promoDTO";
+import PromoDTO from "../../../shared/types/promoDTO";
+import { AdapterDTO } from "@/shared/types/adapter";
 
-export default class PromoAdapter {
-  static toPromo(promoDTO: PromoDTO): Promo {
+export default class PromoAdapter extends AdapterDTO<PromoDTO, Promo> {
+  toModel(promoDTO: PromoDTO): Promo {
     try {
       const {
         id,

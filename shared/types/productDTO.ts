@@ -4,32 +4,32 @@ export default interface ProductDTO {
   _id: string;
   name: string;
   description?: string;
-  category: ProductCategory;
-  status: ProductStatus;
+  category: ProductCategoryDTO;
+  status: ProductStatusDTO;
   price_range: number[];
   rating: number;
   stock: number;
   images_urls: string[];
-  currency: Currency;
+  currency: CurrencyDTO;
   is_hot?: boolean;
   off_percentage?: number;
   is_favorite?: boolean;
 }
 
-export interface ProductStatus {
+export interface ProductStatusDTO {
   // featured, top rated, latest, best selling
   id: number;
   name: string;
   description?: string;
 }
 
-export interface ProductCategory {
+export interface ProductCategoryDTO {
   id: number;
   name: string;
   description?: string;
 }
 
-export interface Currency {
+export interface CurrencyDTO {
   id: number;
   name: string; // USD, PEN, etc
   description?: string;

@@ -1,5 +1,5 @@
 
-import ProductDTO from "@/infrastructure/api/product/productDTO";
+import ProductDTO from "@/shared/types/productDTO";
 
 export const products: ProductDTO[] = [
     {
