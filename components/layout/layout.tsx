@@ -3,7 +3,7 @@ import Navigation from "../navigation/navigation";
 import Footer from "../footer/footer";
 import TopGenericSection from "../sections/top-generic";
 import DiscountTopBanner from "../discount-top-banner";
-import GlobalSection from "../sections/global";
+import Header from "../header";
 
 interface Props extends React.PropsWithChildren {}
 
@@ -12,7 +12,7 @@ function Layout({ children }: Props) {
     <div>
       <DiscountTopBanner />
       <TopGenericSection />
-      <GlobalSection />
+      <Header />
       <Navigation />
       <main>{children}</main>
       <Footer />

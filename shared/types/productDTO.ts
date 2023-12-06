@@ -16,10 +16,15 @@ export default interface ProductDTO {
   is_favorite?: boolean;
 }
 
+export type ProductStatus =
+  | "featured"
+  | "top rated"
+  | "latest"
+  | "best selling";
+
 export interface ProductStatusDTO {
-  // featured, top rated, latest, best selling
   id: number;
-  name: string;
+  name: ProductStatus;
   description?: string;
 }
 

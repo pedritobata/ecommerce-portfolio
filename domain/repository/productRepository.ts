@@ -1,9 +1,14 @@
-
 import Product from "../model/product";
-import { PaginatedList } from '../../shared/types/helpers';
+import { PaginatedList } from "../../shared/types/helpers";
+
+export type ArgsGetProductsByPageStatus = {
+  [status: string]: number;
+};
 
 export default interface ProductRepository {
-    getHomePageTabProducts: (page?: number) => Promise<PaginatedList<Product>>;
-    getHomePageSuggestedProducts: () => Promise<PaginatedList<Product>>;
-    // getByStatus: (statusIds: string[], limit?: number) => Promise<Product[]>;
+  getHomePageTabProducts: (
+    args?: ArgsGetProductsByPageStatus
+  ) => Promise<PaginatedList<Product>[]>;
+  getHomePageSuggestedProducts: () => Promise<PaginatedList<Product>>;
+  // getByStatus: (statusIds: string[], limit?: number) => Promise<Product[]>;
 }

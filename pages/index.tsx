@@ -1,21 +1,29 @@
 import Head from "next/head";
 import { useEffect } from "react";
-import { useSelector } from 'react-redux';
+import { useSelector } from "react-redux";
 
-import { fetchProducts as fetchHomePageProductsTab, selectAllHomePageProductsTab } from "@/store/features/product/homePageProductsTabSlice";
-import { useAppDispatch } from "@/store/store";
+import {
+  fetchProducts as fetchHomePageProductsTab,
+  selectAllHomePageProductsTab,
+} from "@/store/features/product/homePageProductsTabSlice";
+import { useAppDispatch, useAppSelector } from "@/store/store";
+import { useGetHomePageProductsByStatusAndPageQuery } from "@/store/features/api/apiSlice";
 
 export default function Home() {
-  const dispatch = useAppDispatch();
-  const productsTab = useSelector(selectAllHomePageProductsTab);
+  // const dispatch = useAppDispatch();
+  // const productsTab = useAppSelector(selectAllHomePageProductsTab);
 
-  useEffect(() => {
+  /*   useEffect(() => {
     dispatch(fetchHomePageProductsTab()).then((lastAction) => {
       console.log("lastAction =>", lastAction);
     });
-  }, [dispatch]);
+  }, [dispatch]); */
 
-  console.log('productsTab =>', productsTab);
+  const { data, isLoading, isSuccess } =
+    useGetHomePageProductsByStatusAndPageQuery({});
+
+  console.log("productsTab =>", data);
+  console.log("isSuccess =>", isSuccess);
 
   return (
     <>
@@ -26,15 +34,6 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {/* <ProductsTabs 
-        tabs={[
-          { tabName: 'Featured', }
-        ]}
-        enablePagination
-        pageLimit={3}
-        fetch={(page: number, limit = 5) => dispatch(fetchHomePageProductsTab({page, limit}))}
-        selector={selectAllHomePageProductsTab}
-      /> */}
     </>
   );
 }

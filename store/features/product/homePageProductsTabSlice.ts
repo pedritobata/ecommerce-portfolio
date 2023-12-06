@@ -17,16 +17,16 @@ const productUsecase: ProductUseCase = new ProductUseCaseImpl(
   new ProductRepositoryImpl()
 );
 
-// TODO: get rid of the whole file when the equivalent api slice is created!!
+// TODO: get rid of the whole file if the equivalent api slice was created!!
 
 export const fetchProducts = createAsyncThunk<
-  Promise<PaginatedList<Product> | string>,
+  Promise<PaginatedList<Product>[] | string>,
   { page?: number } | undefined,
   {
     rejectValue: string;
   }
 >("homePageProductsTab/fetchProducts", async (args, thunkApi) => {
-  const result = await productUsecase.getHomePageTabProducts(args?.page);
+  const result = {} //await productUsecase.getHomePageTabProducts(args?.page);
   if (result instanceof GenericError)
     return thunkApi.rejectWithValue(result.message) as unknown as string;
 
