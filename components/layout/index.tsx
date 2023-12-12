@@ -1,6 +1,6 @@
 import "./layout.module.css";
-import Navigation from "../navigation/navigation";
-import Footer from "../footer/footer";
+import Navigation from "../navigation";
+import Footer from "../footer";
 import TopGenericSection from "../sections/top-generic";
 import DiscountTopBanner from "../discount-top-banner";
 import Header from "../header";

@@ -1,4 +1,4 @@
-import Layout from "@/components/layout/layout";
+import Layout from "@/components/layout";
 
 export function withLayout(Component: React.ReactElement) {
   function Wrapper() {
