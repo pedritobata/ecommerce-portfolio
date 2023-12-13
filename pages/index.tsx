@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { GetStaticProps, InferGetStaticPropsType } from "next";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 
@@ -8,8 +9,17 @@ import {
 } from "@/store/features/product/homePageProductsTabSlice";
 import { useAppDispatch, useAppSelector } from "@/store/store";
 import { useGetHomePageProductsByStatusAndPageQuery } from "@/store/features/api/apiSlice";
+import { LayoutProps } from "@/shared/types/layout";
+import HomeOneAside from "@/components/sections/home-one-aside/home-one-aside";
+import { ComponentNames } from "@/shared/types/components";
 
-export default function Home() {
+type Props = {
+  layout: LayoutProps;
+};
+
+export default function Home(
+  props: InferGetStaticPropsType<typeof getStaticProps>
+) {
   // const dispatch = useAppDispatch();
   // const productsTab = useAppSelector(selectAllHomePageProductsTab);
 
@@ -34,6 +44,21 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <h1>Homeeee</h1>
     </>
   );
 }
+
+export const getStaticProps = (async () => {
+  return {
+    props: {
+      layout: {
+        type: "oneAside",
+        asideComponent: ComponentNames.HomeOneAside,
+        side: "left",
+        asideFr: 1,
+        mainFr: 1,
+      },
+    },
+  };
+}) satisfies GetStaticProps<Props>;

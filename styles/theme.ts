@@ -9,7 +9,8 @@ export const breakpoints = {
   l: "1280px",
 };
 
-export const theme = {
+
+export const themeTmp = {
   color: {
     light: colors.light,
   },

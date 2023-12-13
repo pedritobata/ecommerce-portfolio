@@ -1,12 +1,16 @@
 import { FC } from "react";
+import { ComponentNames } from "./components";
 
-export interface LayoutProps {
-  type: "wide" | "oneAside";
-}
+export type LayoutProps = WideLayoutProps | OneAsideLayoutProps;
 
-export interface OneAsideLayoutProps extends LayoutProps {
+export interface OneAsideLayoutProps {
+  type: "oneAside";
   side: "left" | "right";
-  AsideComponent: FC;
+  asideComponent: ComponentNames;
   asideFr?: number;
   mainFr?: number;
+}
+
+export interface WideLayoutProps {
+  type: "wide";
 }

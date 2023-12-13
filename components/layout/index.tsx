@@ -1,23 +1,17 @@
-import "./layout.module.css";
-import Navigation from "../navigation";
-import Footer from "../footer";
-import TopGenericSection from "../sections/top-generic";
-import DiscountTopBanner from "../discount-top-banner";
-import Header from "../header";
+import "./styles.module.css";
+import { LayoutProps } from "@/shared/types/layout";
+import { PropsWithChildren } from "react";
+import WideLayout from "./wide/index";
+import OneAsideLayout from "./one-aside";
 
-interface Props extends React.PropsWithChildren {}
-
-function Layout({ children }: Props) {
-  return (
-    <div>
-      <DiscountTopBanner />
-      <TopGenericSection />
-      <Header />
-      <Navigation />
-      <main>{children}</main>
-      <Footer />
-    </div>
-  );
+function Layout(args: LayoutProps & PropsWithChildren) {
+  if (args.type === "wide") {
+    const { children } = args;
+    return <WideLayout>{children}</WideLayout>;
+  } else {
+    const { children, ...rest } = args;
+    return <OneAsideLayout {...rest}>{children}</OneAsideLayout>;
+  }
 }
 
 export default Layout;
