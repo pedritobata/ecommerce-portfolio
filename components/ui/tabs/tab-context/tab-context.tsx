@@ -20,7 +20,7 @@ const initialState: TabState = {
 
 export const TabContext = createContext(initialState);
 
-export default function TabContextProvider({ children }: PropsWithChildren) {
+export function TabContextProvider({ children }: PropsWithChildren) {
   const [value, setValue] = useState(initialState.value);
   const idPrefix = useId();
 

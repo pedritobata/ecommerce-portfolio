@@ -1,3 +1,3 @@
 export interface CustomizableStyles {
-  sx?: { [property: string]: string };
+  sx?: React.CSSProperties;
 }

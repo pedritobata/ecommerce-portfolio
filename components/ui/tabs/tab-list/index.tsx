@@ -9,7 +9,7 @@ interface Props extends CustomizableStyles {
   onChange?: (value: string) => void;
 }
 
-export default function TabList({
+export function TabList({
   children,
   centered = false,
   divider = false,

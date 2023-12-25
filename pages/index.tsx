@@ -12,6 +12,7 @@ import { useGetHomePageProductsByStatusAndPageQuery } from "@/store/features/api
 import { LayoutProps } from "@/shared/types/layout";
 import HomeOneAside from "@/components/sections/home-one-aside/home-one-aside";
 import { ComponentNames } from "@/shared/types/components";
+import { TabPanel } from "@/components/ui/tabs/tab-panel";
 
 type Props = {
   layout: LayoutProps;
@@ -45,6 +46,10 @@ export default function Home(
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <h1>Homeeee</h1>
+      {/* only testing */}
+      <TabPanel value="1" sx={}>
+        <h2>Guarda ahiiii</h2>
+      </TabPanel>
     </>
   );
 }

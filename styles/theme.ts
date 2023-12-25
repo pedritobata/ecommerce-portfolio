@@ -1,3 +1,6 @@
+import { Theme, WidgetsStyles } from "@/shared/types/theme/theme";
+
+// default values
 export const colors = {
   light: "#EAEAEA",
 };
@@ -9,6 +12,73 @@ export const breakpoints = {
   l: "1280px",
 };
 
+/* const baseStyles = {
+  typography: {
+    title : {
+      primary: {
+        fontSize: '2.5em',
+        textTransform: "uppercase",
+        lineHeight: "1.3",
+        fontWeight: "500",
+        textAlign: "center"
+      },
+      secondary: {
+        fontSize: '2em',
+        textTransform: "uppercase",
+        lineHeight: "1.1",
+        fontWeight: "400",
+        textAlign: "left"
+      },
+      article: {
+        fontSize: '1.3em',
+        lineHeight: "1.1",
+        fontWeight: "300",
+        textAlign: "left"
+      },
+    }
+  }
+}; */
+
+// type WidgetsStyles = typeof baseStyles;
+
+// Replace baseStyles with another BaBaseStyles type object to define a new theme styles
+// const styles: WidgetsStyles = baseStyles;
+
+// default widgets styles
+const baseLightStyles: WidgetsStyles = {
+  grid_container: {
+    variant: {
+      flex: {},
+      grid: {},
+    },
+    sx: {
+      margin: 12,
+      background: "",
+    },
+  },
+}; // = styles;
+const baseDarkStyles: WidgetsStyles = { ...baseLightStyles };
+
+export const theme: Theme<WidgetsStyles, {}> = {
+  widgets: {
+    light: baseLightStyles,
+    dark: baseDarkStyles,
+  },
+  colors: {
+    light: {},
+    dark: {},
+  },
+  borders: {},
+  breakpoints: {},
+  fontSizes: {},
+  gaps: {},
+  lineHeights: {},
+  margins: {},
+  paddings: {},
+  textAlign: {},
+};
+
+// theme.widgets.light.grid_container.sx.margin;
 
 export const themeTmp = {
   color: {

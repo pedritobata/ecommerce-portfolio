@@ -8,7 +8,7 @@ interface Props extends CustomizableStyles {
   value: string;
 }
 
-export default function Tab({ label, value, sx = {} }: Props) {
+export function Tab({ label, value, sx = {} }: Props) {
   const { idPrefix, value: activeValue } = useContext(TabContext);
   return (
     <StyledTab

@@ -7,7 +7,7 @@ interface Props extends CustomizableStyles {
   value: string;
 }
 
-export default function TabPanel({
+export function TabPanel({
   children,
   value,
   sx = {},
