@@ -1,3 +1,5 @@
+import type * as CSS from "csstype";
+import { CustomizableStyles, Style } from "@/components/ui/theme-provider/types";
 import { WidgetsAndVariants as GridWidgetsAndVariants } from "./widgets/grid";
 
 export interface Theme<T, U> {
@@ -52,8 +54,7 @@ export type WidgetsAndVariants = GridWidgetsAndVariants; // & WidgetsSectionPref
 export type WidgetsStyles = {
   [key in keyof WidgetsAndVariants]: {
     variant: WidgetsAndVariants[key];
-    sx: React.CSSProperties;
-  };
+  } & CustomizableStyles;
 };
 
 const expample = {

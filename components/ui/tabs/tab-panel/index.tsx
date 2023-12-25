@@ -17,7 +17,7 @@ export function TabPanel({
   return (
     <StyledTabPanel
       $idPrefix={idPrefix}
-      {...(Object.keys(sx).length !== 0 && sx)}
+      {...(Object.keys(sx).length !== 0 && {sx})}
     >
       {children}
     </StyledTabPanel>

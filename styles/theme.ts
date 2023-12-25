@@ -52,8 +52,10 @@ const baseLightStyles: WidgetsStyles = {
       grid: {},
     },
     sx: {
-      margin: 12,
+      margin: '12px',
       background: "",
+      'line-height': 1,
+      // lineHeight: 1
     },
   },
 }; // = styles;
