@@ -1,7 +1,7 @@
 import { PropsWithChildren } from "react";
 import { StyledTabContainer } from "./styled";
 import { CustomizableStyles } from "../../theme-provider/types";
-import { TabContextProvider } from "../tab-context/tab-context";
+import { TabContextProvider } from "../context/tab-context";
 
 interface Props extends CustomizableStyles {
   maxWidth?: string;

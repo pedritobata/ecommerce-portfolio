@@ -12,7 +12,7 @@ import { useGetHomePageProductsByStatusAndPageQuery } from "@/store/features/api
 import { LayoutProps } from "@/shared/types/layout";
 import HomeOneAside from "@/components/sections/home-one-aside/home-one-aside";
 import { ComponentNames } from "@/shared/types/components";
-import { TabPanel } from "@/components/ui/tabs/tab-panel";
+import { TabPanel } from "@/components/ui/tabs/panel";
 
 type Props = {
   layout: LayoutProps;

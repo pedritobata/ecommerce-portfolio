@@ -1,7 +1,7 @@
 import { PropsWithChildren, useContext } from "react";
 import { CustomizableStyles } from "../../theme-provider/types";
 import { StyledTabPanel } from "./styled";
-import { TabContext } from "../tab-context/tab-context";
+import { TabContext } from "../context/tab-context";
 
 interface Props extends CustomizableStyles {
   value: string;

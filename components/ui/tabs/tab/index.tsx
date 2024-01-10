@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { TabContext } from "../tab-context/tab-context";
+import { TabContext } from "../context/tab-context";
 import { StyledTab } from "./styled";
 import { CustomizableStyles } from "../../theme-provider/types";
 
