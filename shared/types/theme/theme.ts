@@ -4,10 +4,10 @@ import { WidgetsAndVariants as TabWidgetsAndVariants } from "./widgets/tabs";
 
 export interface Theme<T> {
   widgets: {
-    light: T;
-    dark: T;
+    [key in Themestype]: T;
   };
   palette: {
+    themeType: Themestype;
     colors: ColorsType;
     opacity: OpacityType;
     breakpoints: BreakpointsType;
@@ -22,6 +22,8 @@ export interface Theme<T> {
 }
 
 /********* palette types  ****************/
+export type Themestype = "light" | "dark";
+
 export interface ColorsType {
   primary: string;
   secondary: string;
@@ -135,8 +137,8 @@ export interface SeparatorProperties {
 
 export interface SeparatorEffect {
   separatorHasEffect: boolean;
-  widthFr: number;
-  direction: "from-center" | "from-left" | "from-right";
+  separatorWidthFr: number;
+  separatorDirection: "from-center" | "from-left" | "from-right";
 }
 
 /********* widgets styles types  ****************/

@@ -13,6 +13,9 @@ import { LayoutProps } from "@/shared/types/layout";
 import HomeOneAside from "@/components/sections/home-one-aside/home-one-aside";
 import { ComponentNames } from "@/shared/types/components";
 import { TabPanel } from "@/components/ui/tabs/panel";
+import { TabContainer } from "@/components/ui/tabs/container";
+import { TabList } from "@/components/ui/tabs/tabs-list";
+import { Tab } from "@/components/ui/tabs/tab";
 
 type Props = {
   layout: LayoutProps;
@@ -47,9 +50,11 @@ export default function Home(
       </Head>
       <h1>Homeeee</h1>
       {/* only testing */}
-      <TabPanel value="1" sx={}>
-        <h2>Guarda ahiiii</h2>
-      </TabPanel>
+      <TabContainer>
+        <TabList>
+          <Tab label="un tab" value="1"/>
+        </TabList>
+      </TabContainer>
     </>
   );
 }

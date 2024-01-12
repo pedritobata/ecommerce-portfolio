@@ -8,7 +8,7 @@ export type WidgetsAndVariants = {
 };
 
 // container
-interface ContainerVariants {
+export interface ContainerVariants {
   horizontal: ContainerThemeProperties;
   vertical: ContainerThemeProperties;
 }
@@ -16,24 +16,24 @@ interface ContainerVariants {
 interface ContainerThemeProperties extends BoxProperties {}
 
 // tabs list
-interface ListVariants {
+export interface ListVariants {
   horizontal: ListThemePropertiesH;
   vertical: ListThemePropertiesV;
 }
 
-interface ListThemePropertiesH extends BoxProperties, SeparatorProperties {
+export interface ListThemePropertiesH extends BoxProperties, SeparatorProperties {
   hasSeparator: boolean;
 }
 
 interface ListThemePropertiesV extends BoxProperties {}
 
 // tab
-interface TabVariants {
+export interface TabVariants {
   underlined: TabThemeProperties;
   outlined: TabThemeProperties;
 }
 
-interface TabThemeProperties
+export interface TabThemeProperties
   extends BoxProperties,
     SeparatorProperties,
     SeparatorEffect {
@@ -41,7 +41,7 @@ interface TabThemeProperties
 }
 
 // panel
-interface PanelVariants {
+export interface PanelVariants {
   normal: PanelThemeProperties;
 }
 

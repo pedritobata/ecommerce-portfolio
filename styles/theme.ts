@@ -12,9 +12,11 @@ import {
   BordersType,
   TextAlignType,
   BoxProperties,
+  Themestype,
 } from "@/shared/types/theme/theme";
 
 /********* default values  ****************/
+export const themeType: Themestype = "light";
 export const colors: ColorsType = {
   alert: "red",
   backgroundLighted: "rgb(246, 247, 249)",
@@ -107,6 +109,7 @@ export const textAlign: TextAlignType = {
 
 /********* default palette  ****************/
 export const defaultPalette: Theme<WidgetsStyles>["palette"] = {
+  themeType,
   colors,
   opacity,
   borders,
@@ -165,14 +168,14 @@ const baseLightStyles: WidgetsStyles = {
         paddingH: paddings.secondaryH,
         paddingV: paddings.secondaryV,
         borderColor: colors.dimmed,
-        direction: "from-center",
+        separatorDirection: "from-center",
         hasSeparator: false,
         separatorHasEffect: false,
         separatorIsHorizontal: true,
         separatorSize: "0px",
         separatorBorderWidth: "0px",
         separatorBorderColor: "",
-        widthFr: 1, // <0, 1> e.g 0.4, means element must take 40% of parent and sibblings 60%
+        separatorWidthFr: 1, // <0, 1> e.g 0.4, means element must take 40% of parent and sibblings 60%
       },
       underlined: {
         ...presetBoxProperties,
@@ -182,14 +185,14 @@ const baseLightStyles: WidgetsStyles = {
         paddingH: paddings.secondaryH,
         paddingV: paddings.secondaryV,
         borderColor: colors.primary,
-        direction: "from-center",
+        separatorDirection: "from-center",
         hasSeparator: true,
         separatorHasEffect: true,
         separatorIsHorizontal: true,
         separatorSize: "100%",
         separatorBorderWidth: borders.widthPrimary,
         separatorBorderColor: colors.primary,
-        widthFr: 1,
+        separatorWidthFr: 1,
       },
     },
     sx: {},

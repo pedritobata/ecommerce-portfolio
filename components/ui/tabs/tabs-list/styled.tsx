@@ -1,16 +1,34 @@
 import { styled } from "styled-components";
+import { StyledWidgetProps } from "../../theme-provider/types";
+import {
+  ListThemePropertiesH,
+  ListVariants,
+  TabThemeProperties,
+} from "@/shared/types/theme/widgets/tabs";
+import {
+  getCSSRulesFromBoxProperties,
+  getCSSRulesFromJS,
+  getCSSRulesFromSeparatorProperties,
+} from "@/utils/themeUtils";
 
-interface Props {
+interface Props extends StyledWidgetProps<ListVariants> {
   $centered?: boolean;
-  $divider?: boolean;
 }
 
 export const StyledTabList = styled.div<Props>`
   display: flex;
+  flex-direction: ${(props) =>
+    props.$variant === "horizontal" ? "row" : "column"};
   align-items: center;
   justify-content: ${(props) => (props.$centered ? "center" : "flex-start")};
-  gap: ${(props) => props.theme.gap.normal};
-  margin: ${(props) => props.theme.margin.vertical.title} 0;
-  border-bottom: ${(props) =>
-    props.$divider ? props.theme.border.divider.normal : "none"};
+  gap: ${(props) => props.theme.palette.gaps.secondary};
+  ${(props) => getCSSRulesFromBoxProperties(props.$themeStyles)};
+  ${(props) =>
+    props.$variant === "horizontal" &&
+    (props.$themeStyles as ListThemePropertiesH).hasSeparator
+      ? getCSSRulesFromSeparatorProperties(
+          props.$themeStyles as TabThemeProperties
+        )
+      : ""};
+  ${(props) => getCSSRulesFromJS(props.$sx)};
 `;

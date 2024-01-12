@@ -1,13 +1,14 @@
 import { styled } from "styled-components";
+import { StyledWidgetProps } from "../../theme-provider/types";
+import { ContainerVariants } from "@/shared/types/theme/widgets/tabs";
+import {
+  getCSSRulesFromBoxProperties,
+  getCSSRulesFromJS,
+} from "@/utils/themeUtils";
 
-interface Props {
-  $maxWidth?: string;
-  $maxHeight?: string;
-}
+interface Props extends StyledWidgetProps<ContainerVariants> {}
 
 export const StyledTabContainer = styled.div<Props>`
-  max-width: ${(props) => props.$maxWidth || "100%"};
-  max-height: ${(props) => props.$maxHeight || "none"};
-  margin: ${(props) => props.theme.vertical.section};
-  padding: ${(props) => props.theme.primary};
+  ${(props) => getCSSRulesFromBoxProperties(props.$themeStyles)}
+  ${(props) => getCSSRulesFromJS(props.$sx)}
 `;
